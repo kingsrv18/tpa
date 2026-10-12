@@ -1,0 +1,12 @@
+{
+  "name": "layernote-replica",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/server.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node --check src/interactions.js && node --check scripts/server.mjs"
+  },
+  "devDependencies": { "cheerio": "^1.1.2" }
+}

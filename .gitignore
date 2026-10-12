@@ -1,0 +1,11 @@
+node_modules/
+dist/
+reference.html
+reference-assets.json
+reference-parts.json
+reference-cookie.json
+scripts/prepare-reference.mjs
+scripts/inspect.mjs
+preview-*.png
+.sites-workflow/
+*.tar.gz

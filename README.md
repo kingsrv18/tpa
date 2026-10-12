@@ -1,31 +1,42 @@
-# Layernote replica
+# TPA — LayerNote theme redesign
 
-A responsive recreation of the [Layernote homepage](https://layernote.io/), with the reference's Inter font, illustrations, SVG artwork, product mockups, and all twelve marketing sections stored locally.
+Tollygunge Professional Association's public website, rebuilt around the LayerNote visual and motion system. The complete TPA Next.js platform was carried over from the supplied `TPA/tollygunge` project; that original project was not modified.
 
-## Run
+## Run the complete application
 
 ```sh
 npm install
 npm run dev
 ```
 
-Open http://localhost:5173. `npm run build` prepares a static deployment in `dist/`; `npm run check` checks JavaScript syntax.
+Open http://127.0.0.1:5173. Public pages render without provider credentials. The real inquiry, account, member and staff operations require the database, authentication, storage and email settings described in `.env.example` and the preserved `docs/`. No production credentials or member records were copied. Keep credentials in an ignored `.env.local` or the existing hosting service's secret settings.
 
-## Interactions
+`npm run build` builds the full Next.js application and its existing background workers. `npm run typecheck` and `npm test` validate the preserved platform. `/preview/admin` remains the original synthetic staff preview.
 
-- Responsive navigation with a mobile menu and smooth section navigation.
-- Animated hero review, comment creation, terminal handoff, and resolution sequence.
-- Scroll reveals, background line motion, parallax photography, animated file cards, comparison wipe, and integration marquees.
-- Three stacked workflow steps with scroll tracking, working project selectors, and manual/Claude resolution demos.
-- Audience and capability carousels with arrows, dragging, touch scrolling, and keyboard navigation.
-- Automatic and manual testimonial transitions.
-- Monthly/annual pricing, animated FAQ accordions, and persistent cookie preferences.
-- Reduced-motion support and keyboard focus indicators.
+## Public design
 
-This is a frontend marketing replica. Trial, Google sign-up, sign-in, resource, legal, and comparison links open their original destinations. Project creation and agent resolution are browser-local demonstrations; they do not create accounts or invoke a coding agent. No analytics or marketing trackers are included.
+The public navigation is reduced to Community, Membership, Events, Resources and Contact. Governance stays available through the footer. Patron, Annual and Life categories come from the supplied project; the redesign does not invent fees, member statistics, testimonials, events or official profiles.
 
-## Source
+Motion includes the highlighted hero, typed journey demonstration, moving backgrounds, scroll reveals, photographic parallax, stacked Join/Learn/Contribute panels, draggable carousels, resource marquees, floating file cards, an interactive comparison slider, purpose cross-fades, membership/application toggles, FAQs, hover effects and the mobile menu. Reduced-motion preferences are respected.
 
-`src/index.html` contains the full page markup; `src/interactions.js` owns the behavior and animation sequences; `src/behaviors.css` contains interaction styles. Original visual assets and compiled layout styles are in `src/assets/`. `scripts/server.mjs` serves the source locally and `scripts/build.mjs` packages it.
+The homepage uses the original anonymous inquiry component with optional fields collapsed. Published homepage media, CMS content, event pages, applications, account permissions and protected APIs retain the original platform implementation. Account and membership approval remain separate.
 
-The reference was inspected on October 12, 2026. Brand, imagery, and original marketing copy belong to their respective owners.
+## Editing
+
+- `theme/reference.html`: immutable LayerNote layout reference.
+- `scripts/adapt-theme.mjs`: TPA copy, navigation and illustration adaptation.
+- `theme/interactions.js`, `theme/behaviors.css`, `theme/tpa.css`: motion and interaction styles.
+- `scripts/scope-theme.mjs`: isolates the theme from the member/staff interfaces.
+- `src/components/tpa-landing.tsx`: mounts the theme and the actual TPA components.
+- `src/app/tpa-public.css`: restyles public information and account-entry pages.
+- `src/app`, `src/lib`, `src/domain`, `migrations`: preserved TPA platform.
+
+The theme regenerates before development and production builds. All fonts and illustrations are stored locally. Professional portraits/settings in the theme are illustrative, not association member profiles.
+
+## Private visual preview
+
+With the dev server running, `npm run build:preview` packages the homepage and six public information pages into `dist/`. `npm run preview` serves that package at http://127.0.0.1:5174.
+
+The Sites deployment is a private **public-design preview**, not a new deployment of PostgreSQL or the member/staff platform. Its account and inquiry actions continue to the existing TPA website. To activate the complete redesigned platform, deploy the Next.js build through the original Node/Railway workflow with its existing managed settings. The original live site is not changed by publishing this private preview.
+
+The original TPA operational documentation remains in `docs/`; its dated rollout history describes the original platform. LayerNote branding/artwork and the supplied TPA content belong to their respective owners.

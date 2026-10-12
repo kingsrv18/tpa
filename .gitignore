@@ -1,6 +1,16 @@
 node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*
+!.env.example
+.local/
+.postgres-ca.pem
+playwright-report/
+test-results/
 dist/
 reference.html
+!theme/reference.html
 reference-assets.json
 reference-parts.json
 reference-cookie.json

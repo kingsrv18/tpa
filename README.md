@@ -13,6 +13,14 @@ Open http://127.0.0.1:5173. Public pages render without provider credentials. Th
 
 `npm run build` builds the full Next.js application and its existing background workers. `npm run typecheck` and `npm test` validate the preserved platform. `/preview/admin` remains the original synthetic staff preview.
 
+## Isolated local login and database
+
+Start Docker Desktop, then run `npm run local:setup` and `npm run dev`. Setup creates a dedicated PostgreSQL 17 container on loopback port 5432, a persistent named volume, all migrations, postal reference data, and synthetic administrator/member accounts. It generates ignored `.env.local` settings and saves passwords in ignored `.local/login-credentials.txt`. It never changes existing account passwords on reruns or connects to a production database.
+
+Sign in at http://127.0.0.1:5173/login using `admin@tpa.local` or `member@tpa.local` and the corresponding password from that file. The administrator opens `/admin`; the member opens `/member`. Run `node scripts/verify-local-auth.mjs` to verify both real password sessions and portal separation. These are test website accounts; association membership approval remains separate.
+
+`npm run local:db:stop` stops the database while preserving its data. `npm run local:db:start` starts it again. The local app contains its backend API routes in the same Next.js server; no second backend server is required. Storage, outbound email, Google sign-in, and public signup are disabled in this local setup. Existing test accounts use password authentication and can explore profile, application, event and staff screens without document uploads.
+
 ## Public design
 
 The public navigation is reduced to Community, Membership, Events, Resources and Contact. Governance stays available through the footer. Patron, Annual and Life categories come from the supplied project; the redesign does not invent fees, member statistics, testimonials, events or official profiles.
@@ -29,6 +37,7 @@ The homepage uses the original anonymous inquiry component with optional fields 
 - `scripts/scope-theme.mjs`: isolates the theme from the member/staff interfaces.
 - `src/components/tpa-landing.tsx`: mounts the theme and the actual TPA components.
 - `src/app/tpa-public.css`: restyles public information and account-entry pages.
+- `src/app/tpa-system.css`: shared Inter typography, homepage palette, light/dark contrast, responsive staff/member shells, form controls and account-entry layouts across the application.
 - `src/app`, `src/lib`, `src/domain`, `migrations`: preserved TPA platform.
 
 The theme regenerates before development and production builds. All fonts and illustrations are stored locally. Professional portraits/settings in the theme are illustrative, not association member profiles.

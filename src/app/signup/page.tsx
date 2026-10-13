@@ -8,12 +8,17 @@ export default async function Page() {
   return (
     <SiteShell>
       <main id="main" className="page-content">
-        <h1>Create your TPA account</h1>
+        <span className="eyebrow">Your TPA account</span>
+        <h1>Find your place here.</h1>
+        <p>Your account is the starting point for your professional journey with TPA.</p>
+        <section className="login-panel">
+        <h2>Create your account</h2>
         {process.env.ONBOARDING_ENABLED === "true" ? (
           <Signup />
         ) : (
           <p>Account registration is not available yet.</p>
         )}
+        </section>
       </main>
     </SiteShell>
   );

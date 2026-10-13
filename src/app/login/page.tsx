@@ -35,7 +35,7 @@ export default async function Login({
           {actor && switching ? "Sign in to another account." : "Welcome back."}
         </h1>
         <p>
-          Keep your profile and private documents together in your member space.
+          Your profile, professional journey and community connections, together in one place.
         </p>
         <section className="login-panel">
           {actor && switching && (
@@ -62,13 +62,7 @@ export default async function Login({
           {process.env.ONBOARDING_ENABLED === "true" && (
             <Link href="/signup">Create an account</Link>
           )}
-          <GoogleSignIn enabled={enabled} />
-          {!enabled && (
-            <p className="notice">
-              Google sign-in is not available yet. Use your assigned account to
-              sign in.
-            </p>
-          )}
+          {enabled && <GoogleSignIn enabled={enabled} />}
         </section>
       </main>
     </SiteShell>

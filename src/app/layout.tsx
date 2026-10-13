@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "./tpa-public.css";
+import "./tpa-system.css";
+import "../../public/theme/scoped.css";
 import { appearanceBootstrap } from "@/domain/appearance";
 const inter = localFont({ src: "../../public/theme/assets/080f1bf00d41c6a3.woff2", display: "swap", variable: "--font-inter", weight: "100 900" });
 export const metadata: Metadata = {
@@ -16,7 +18,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: appearanceBootstrap }} />
       </head>

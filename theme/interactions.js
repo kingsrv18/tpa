@@ -107,9 +107,8 @@ const testimonials=$('#testimonials'),quotes=$$('.swiper-slide',testimonials),do
 function testimonial(n){quoteIndex=(n+quotes.length)%quotes.length;quotes.forEach((q,i)=>{q.classList.toggle('is-active',i===quoteIndex);q.setAttribute('aria-hidden',String(i!==quoteIndex));q.inert=i!==quoteIndex;});dots.forEach((d,i)=>{d.classList.toggle('is-active',i===quoteIndex);d.setAttribute('aria-pressed',String(i===quoteIndex));});}
 dots.forEach((d,i)=>d.addEventListener('click',()=>testimonial(i)));$('button[aria-label="Previous purpose"]',testimonials)?.addEventListener('click',()=>testimonial(quoteIndex-1));$('button[aria-label="Next purpose"]',testimonials)?.addEventListener('click',()=>testimonial(quoteIndex+1));testimonial(0);sequence(testimonials,[[8000,()=>testimonial(quoteIndex+1)]],8001);
 
-// Monthly / annual billing control.
-const pricing=$('#pricing'),billing=$$('button',pricing).slice(0,2),prices=$$('h3',pricing).map(h=>$$('span',h.parentElement.parentElement).find(e=>/^\$\d+$/.test(e.textContent.trim())));
-const numbers=$$('span',pricing).filter(e=>/^\$\d+$/.test(e.textContent.trim())&&e.children.length===0);
+// Membership options / application journey control.
+const pricing=$('#pricing'),billing=$$('button',pricing).slice(0,2);
 function membershipView(i){billing.forEach((x,j)=>{x.setAttribute('aria-pressed',String(i===j));x.style.color=i===j?'#05131a':'#ffffff99';});const b=billing[i],thumb=billing[0].parentElement.firstElementChild;thumb.style.width=b.getBoundingClientRect().width+'px';thumb.style.transform=`translateX(${b.offsetLeft}px)`;thumb.style.transition='transform .3s,width .3s';$$('[data-plan-card]',pricing).forEach(card=>{$('.tpa-plan-front',card).hidden=Boolean(i);$('.tpa-plan-back',card).hidden=!i;animate(card,[{opacity:.65,translate:'0 7px'},{opacity:1,translate:'0 0'}],{duration:350});});}
 billing.forEach((b,i)=>b.addEventListener('click',()=>membershipView(i)));requestAnimationFrame(()=>membershipView(0));
 new ResizeObserver(()=>{const active=billing.findIndex(b=>b.getAttribute('aria-pressed')==='true'),b=billing[Math.max(0,active)],thumb=b.parentElement.firstElementChild;thumb.style.width=b.getBoundingClientRect().width+'px';thumb.style.transform=`translateX(${b.offsetLeft}px)`;}).observe(billing[0].parentElement);

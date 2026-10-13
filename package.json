@@ -20,7 +20,10 @@
     "release:check": "node scripts/verify-release.mjs",
     "test:email": "node --env-file-if-exists=.env.local --import tsx --test tests/email.integration.ts",
     "test:onboarding": "node --env-file-if-exists=.env.local --import tsx scripts/test-onboarding-local.mts",
-    "test:browser": "playwright test"
+    "test:browser": "playwright test",
+    "local:setup": "node scripts/setup-local.mjs",
+    "local:db:start": "docker compose --env-file .env.local -f compose.local.yml up -d --wait",
+    "local:db:stop": "docker compose --env-file .env.local -f compose.local.yml stop"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1146.0",

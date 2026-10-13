@@ -121,7 +121,6 @@ $('[data-wrap]').append('<p class="tpa-form-demo-help">Illustrative preview · n
 // Events illustration: original pinned popup and animated toolbar, new semantics.
 $('[data-find-site]').find('img').remove();
 $('[data-find-site]').find('span').filter((_,e)=>$(e).text()==='fieldwork.app').text('TPA · Events & learning');
-const findToolbar=$('[data-find-toolbar]');
 $('[data-find-site]').children().last().find('.relative').first().prepend(`<div class="tpa-event-illustration"><span class="tpa-small-label">EVENTS & LEARNING</span><h4>Knowledge, with a<br>human connection.</h4><div class="tpa-event-symbols"><span>↗</span><span>✦</span><span>◎</span></div><span class="tpa-illustration-caption">Seminars · Workshops · Conversations</span></div>`);
 $('[data-find-comment]').html(`<div class="tpa-note"><span class="tpa-note-eyebrow">YOUR NEXT CONVERSATION</span><strong>Find something that moves you forward.</strong><p>Explore confirmed events and registration details.</p><a href="/events">Explore events ↗</a></div>`);
 

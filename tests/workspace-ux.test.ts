@@ -26,8 +26,8 @@ test("appearance separates preference from resolved mode and follows cross-tab/O
     matchMedia: () => media,
     addEventListener: (key: string, fn: () => void) => (handlers[key] = fn),
   });
-  assert.equal(root.dataset.mode, "system");
-  assert.equal(root.dataset.colorMode, "dark");
+  assert.equal(root.dataset.mode, "light");
+  assert.equal(root.dataset.colorMode, "light");
   value = JSON.stringify({ theme: "future", mode: "light" });
   handlers.storage();
   assert.equal(root.dataset.theme, "tpa");
@@ -45,7 +45,7 @@ test("appearance separates preference from resolved mode and follows cross-tab/O
   assert.equal(root.dataset.colorMode, "light");
   value = "broken";
   handlers.storage();
-  assert.equal(root.dataset.mode, "system");
+  assert.equal(root.dataset.mode, "light");
 });
 test("search permissions exclude unrelated record sources for every staff role", () => {
   const expected: Record<string, string[]> = {

@@ -28,7 +28,6 @@ export function TpaLanding({html, signedIn, staff, media}: {html:string; signedI
     container.append(script);
   }, [signedIn, staff]);
   return <>
-    <link rel="stylesheet" href="/theme/scoped.css" />
     <div className="layernote-theme" ref={root} dangerouslySetInnerHTML={{__html:html}} />
     {inquiryHost && createPortal(<PublicInquiry source="homepage" compact />, inquiryHost)}
     {mediaHost && media && createPortal(media, mediaHost)}

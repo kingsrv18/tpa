@@ -31,9 +31,14 @@ export default async function Member() {
         {process.env.ONBOARDING_ENABLED === "true" ? (
           <MemberOnboarding attentionCount={attention.length} />
         ) : (
-          <Link className="button" href="/member/application">
-            Continue your application
-          </Link>
+          <section className="member-card member-next-step">
+            <span className="eyebrow">Your next step</span>
+            <h2>Bring your perspective.</h2>
+            <p>Complete your professional details and follow your application in one place.</p>
+            <Link className="button" href="/member/application">
+              Continue your application
+            </Link>
+          </section>
         )}
         <section className="member-card member-profile-summary">
           <div>
@@ -57,31 +62,26 @@ export default async function Member() {
             {[
               [
                 "/member/events",
-                "01",
                 "Events & attendance",
                 "Discover learning opportunities and manage your registrations.",
               ],
               [
                 "/member/inquiries",
-                "02",
                 "Your inquiries",
                 "Follow your conversations with the association.",
               ],
               [
                 "/member/security",
-                "03",
                 "Account security",
                 "Manage your password and signed-in sessions.",
               ],
               [
                 "/member/payments",
-                "04",
                 "Payment details",
                 "View association payment information when available.",
               ],
-            ].map(([href, number, title, description]) => (
+            ].map(([href, title, description]) => (
               <Link className="member-service-tile" href={href} key={href}>
-                <span className="eyebrow">{number}</span>
                 <h3>
                   {title}
                   <span aria-hidden="true">↗</span>

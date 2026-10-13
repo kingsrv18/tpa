@@ -32,12 +32,12 @@ function usePopoverPosition(
 function ModeControl() {
   const [mode, setMode] = useState(() =>
     typeof document === "undefined"
-      ? "system"
-      : document.documentElement.dataset.mode || "system",
+      ? "light"
+      : document.documentElement.dataset.mode || "light",
   );
   useEffect(() => {
     const sync = () =>
-      setMode(document.documentElement.dataset.mode || "system");
+      setMode(document.documentElement.dataset.mode || "light");
     window.addEventListener("storage", sync);
     window.addEventListener("tpa-appearance", sync);
     return () => {
